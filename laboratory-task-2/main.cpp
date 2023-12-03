@@ -16,7 +16,7 @@ int main() {
 
         while (tempNumber2 > 0) {
             if (tempNumber2 % 10 == digit) {
-                count++;
+                ++count;
             }
             tempNumber2 /= 10;
         }
@@ -41,3 +41,4 @@ int main() {
 
     return 0;
 }
+
