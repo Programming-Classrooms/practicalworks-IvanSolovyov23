@@ -1,10 +1,14 @@
 #include <iostream>
 #include <vector>
 #include <ctime>
+
+
 using std:: vector;
 using std:: cout;
 using std:: cin;
 using std:: endl;
+
+
 int main()
 {
     try
@@ -144,3 +148,4 @@ int main()
     }
     return 0;
 }
+
