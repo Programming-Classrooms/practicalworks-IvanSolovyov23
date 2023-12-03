@@ -1,6 +1,8 @@
 ﻿#include <iostream>
 #include <ctime>
 #include <exception>
+
+
 int sumElements(int size, int* arr, int sum)
 {
 	for (int i = 0; i < size; ++i)
