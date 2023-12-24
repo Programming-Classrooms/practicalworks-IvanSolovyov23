@@ -1,19 +1,17 @@
-// Лабораторная работа 1. Соловьёв Иван
-//e^x= 1+(x/1!)+ (x^2/2!) + ...
+// Calculate the sum of a series: e^x= 1+(x/1!)+ (x^2/2!) + ...
 #include <iostream> 
 #define USE_MATH_DEFINES
 #include <cmath>
-using namespace std;
 int main()
 {
 	setlocale(LC_ALL, "RU");
 	double x, epsilon;
 	int k;
-	cout << "Введите значение х:" << endl;
-	cin >> x;
+	std::cout << "Enter value x:" << std:: endl;
+	std::cin >> x;
 	do {
-		cout << "Введите значение k (k>1):" << endl;
-		cin >> k;
+		std:: cout << "Enter the number of series terms to calculate k (k>1):" << std:: endl;
+		std:: cin >> k;
 	} while (k <= 1);
 	epsilon = pow(10, -k);
 	double result = 1.0;
@@ -26,7 +24,7 @@ int main()
 		n++;
 	}
 	double standard_result = exp(x);
-	cout << "Приближенное значение:" << result << endl;
-	cout << "Значение с использованием exp(x):" << standard_result << endl;
+	std:: cout << "Approximate sum of series:" << result << std:: endl;
+	std:: cout << "Meaning exp(x):" << standard_result << std:: endl;
 	return 0;
 }
