@@ -11,7 +11,7 @@ int sumElements(int size, int* arr, int sum)
 	}
 	return sum;
 }
-void bublle(int arr[], int size)
+void bubbleSort(int arr[], int size)
 {
 	for (int i = 0; i < size - 1; ++i)
 	{
@@ -24,14 +24,14 @@ void bublle(int arr[], int size)
 		}
 	}
 }
-void random(int size, int* arr, int x, int y)
+void fillRandomArray(int size, int* arr, int x, int y)
 {
 	for (int i = 0; i < size; ++i)
 	{
 		arr[i] = x + rand() % (y - x + 1);
 	}
 }
-void otric(int size, int arr[])
+void findNegativeElements(int size, int arr[])
 {
 	for (int i = 0; i < size; i++)
 	{
@@ -43,7 +43,7 @@ void otric(int size, int arr[])
 	}
 }
 
-int find_first_zero(int* arr, int size)
+int findFirstZero(int* arr, int size)
 {
 	int first_zero = -1;
 	for (size_t i = 0; i < size; ++i)
@@ -58,7 +58,7 @@ int find_first_zero(int* arr, int size)
 	return first_zero;
 }
 
-int find_last_zero(int* arr, int size)
+int findLastZero(int* arr, int size)
 {
 	int last_zero = -1;
 	for (size_t i = size - 1; i >= 0; --i)
@@ -73,7 +73,7 @@ int find_last_zero(int* arr, int size)
 	return last_zero;
 }
 
-void check_zeroes(int last_zero, int first_zero)
+void checkZeroes(int last_zero, int first_zero)
 {
 	if (last_zero == -1)
 	{
@@ -81,11 +81,11 @@ void check_zeroes(int last_zero, int first_zero)
 	}
 	if (last_zero == first_zero)
 	{
-		throw std::exception("not enough 0");
+		throw std::exception("Not enough 0");
 	}
 }
 
-int sum_between_zeroes(int* arr, int first_zero, int last_zero)
+int sumBetweenZeroes(int* arr, int first_zero, int last_zero)
 {
 	int sum = 0;
 	for (size_t i = first_zero; i <= last_zero; ++i)
@@ -96,7 +96,7 @@ int sum_between_zeroes(int* arr, int first_zero, int last_zero)
 	return sum;
 }
 
-void polog(int size, int arr[])
+void findPositiveElements(int size, int arr[])
 {
 	for (int i = 0; i < size; ++i)
 	{
@@ -106,14 +106,14 @@ void polog(int size, int arr[])
 		}
 	}
 }
-void vivod(int size, int* arr)
+void printArray(int size, int* arr)
 {
 	for (int i = 0; i < size; ++i)
 	{
 		std::cout << "|" << arr[i] << "|" << '\t';
 	}
 }
-int composition( int size, int* arr)
+int compositionElements( int size, int* arr)
 {
 	int pr = 1;
 	for (int i = 0; i < size; i += 2)
@@ -122,7 +122,7 @@ int composition( int size, int* arr)
 	}
 	return pr;
 }
-void zapol(int size, int* arr)
+void fillArray(int size, int* arr)
 {
 	for (int i = 0; i < size; ++i)
 	{
@@ -135,8 +135,8 @@ int main()
 	try 
 	{
 		srand(time(NULL));
-		int x = 0;
-		int y = 0;
+		int min = 0;
+		int max = 0;
 		int sum = 0;
 		int first_zero = -1;
 		int last_zero = -1;
@@ -158,43 +158,43 @@ int main()
 		switch (a)
 		{
 		case '0':
-			std::cout << "X - minimal element; Y - maximum element" << '\n';
+			std::cout << "X- bottom limit; Y - upper limit" << '\n';
 			std::cout << "X =" << " ";
-			std::cin >> x;
+			std::cin >> min;
 			std::cout << "Y =" << " ";
-			std::cin >> y;
-			if (x > y)
+			std::cin >> max;
+			if (min > max)
 			{
 				std::cout << "Read carefully";
 				exit(0);
 			}
-			random(size, arr, x, y);
-			last_zero = find_last_zero(arr, size);
-			first_zero = find_first_zero(arr, size);
-			check_zeroes(last_zero, first_zero);
-			sum = sum_between_zeroes(arr, first_zero, last_zero);
-			otric(size, arr);
+			fillRandomArray(size, arr, min, max);
+			last_zero = findLastZero(arr, size);
+			first_zero = findFirstZero(arr, size);
+			checkZeroes(last_zero, first_zero);
+			sum = sumBetweenZeroes(arr, first_zero, last_zero);
+			findNegativeElements(size, arr);
 			std::cout << '\t';
-			polog(size, arr);
-			bublle(arr, size);
-			vivod(size, arr);
+			findPositiveElements(size, arr);
+			bubbleSort(arr, size);
+			printArray(size, arr);
 			std::cout << " ";
-			std::cout << "Composition = " << composition(size, arr);
+			std::cout << "Composition = " << compositionElements(size, arr);
 			std::cout << '\n';
 			std::cout << "Summa =" << " " << sum;
 			break;
 		case '1':
-			zapol(size, arr);
-			last_zero = find_last_zero(arr, size);
-			first_zero = find_first_zero(arr, size);
-			check_zeroes(last_zero, first_zero);
-			sum = sum_between_zeroes(arr, first_zero, last_zero);
-			otric(size, arr);
+			fillArray(size, arr);
+			last_zero = findLastZero(arr, size);
+			first_zero = findFirstZero(arr, size);
+			checkZeroes(last_zero, first_zero);
+			sum = sumBetweenZeroes(arr, first_zero, last_zero);
+			findNegativeElements(size, arr);
 			std::cout << '\t';
-			polog(size, arr);
-			vivod(size, arr);
+			findPositiveElements(size, arr);
+			printArray(size, arr);
 			std::cout << " ";
-			std::cout << "Composition = " << composition(size, arr);
+			std::cout << "Composition = " << compositionElements(size, arr);
 			std::cout << '\n';
 			std::cout << "Summa =" << " " << sum;
 			break;
