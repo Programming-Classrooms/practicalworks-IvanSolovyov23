@@ -1,151 +1,130 @@
 #include <iostream>
-#include <vector>
-#include <ctime>
 
 
-using std:: vector;
-using std:: cout;
-using std:: cin;
-using std:: endl;
-
-
-int main()
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ Рё Р·Р°РїРѕР»РЅРµРЅРёСЏ РјР°СЃСЃРёРІР° СЃР»СѓС‡Р°Р№РЅС‹РјРё С‡РёСЃР»Р°РјРё
+void generateRandomArray(int* arr, size_t size, int8_t min, int8_t max) 
 {
-    try
-    {
-        setlocale(LC_ALL, "RU");
-        char a = '0';
-        cout << "0 - Random, 1- Personal choose" << endl;
-        cin >> a;
-        if (a == '0')
-        {
-            srand(time(NULL));
-            int m = 3, n = 3; // Размеры матрицы
-            vector<double> X(m), Y(n);
-            vector<vector<double>> mtr(m, vector<double>(n));
-            // Заполнение векторов X и Y случайными значениями
-            for (int i = 0; i < m; i++)
-            {
-                X[i] = rand() / (double)RAND_MAX * 10; // Случайное число от 0 до 10
-            }
-            for (int j = 0; j < n; j++)
-            {
-                Y[j] = rand() / (double)RAND_MAX * 10; // Случайное число от 0 до 10
-            }
-            // Заполнение матрицы Коши
-            for (int i = 0; i < m; i++)
-            {
-                for (int j = 0; j < n; j++)
-                {
-                    mtr[i][j] = 1 / (X[i] + Y[j]);
-                }
-            }
-
-            // Вывод матрицы Коши
-            cout << "Матрица Коши:" << endl;
-            for (int i = 0; i < m; i++)
-            {
-                for (int j = 0; j < n; j++)
-                {
-                    cout << mtr[i][j] << " ";
-                }
-                cout << endl;
-            }
-            // Нахождение суммы элементов каждого столбца
-            vector<double> sum(n, 0);
-            for (int j = 0; j < n; j++)
-            {
-                for (int i = 0; i < m; i++) {
-                    sum[j] += mtr[i][j];
-                }
-            }
-            // Вывод суммы элементов каждого столбца
-            cout << "Сумма элементов каждого столбца:" << endl;
-            for (int j = 0; j < n; j++)
-            {
-                cout << "Столбец " << j << ": " << sum[j] << endl;
-            }
-        } 
-        else
-        if (a == '1')
-        {
-            int m, n;
-            cout << "Введите количество строк: ";
-            cin >> m;
-            if (m < 0)
-            {
-                throw std::exception("Количество не может быть отрицательным");
-            }
-            cout << "Введите количество столбцов: ";
-            cin >> n;
-            if (n < 0)
-            {
-                throw std::exception("Количество не может быть отрицательным");
-            }
-            vector<double> X(m), Y(n);
-            vector<vector<double>> K(m, vector<double>(n));
-
-            cout << "Введите элементы вектора X:" << endl;
-            for (int i = 0; i < m; i++)
-            {
-                cout << "X[" << i << "]: ";
-                cin >> X[i];
-                if (X[i] == 0)
-                {
-                    throw std::exception("На ноль делить нельзя");
-                }
-            }
-
-            cout << "Введите элементы вектора Y:" << endl;
-            for (int j = 0; j < n; j++)
-            {
-                cout << "Y[" << j << "]: ";
-                cin >> Y[j];
-                if (Y[j] == 0)
-                {
-                    throw std::exception("На ноль делить нельзя");
-                }
-            }
-
-            for (int i = 0; i < m; i++)
-            {
-                for (int j = 0; j < n; j++)
-                {
-                    K[i][j] = 1 / (X[i] + Y[j]);
-                }
-            }
-            cout << "Матрица Коши:" << endl;
-            for (int i = 0; i < m; i++)
-            {
-                for (int j = 0; j < n; j++)
-                {
-                    cout << K[i][j] << " ";
-                }
-                cout << endl;
-            }
-            vector<double> sum(n, 0);
-            for (int j = 0; j < n; j++)
-            {
-                for (int i = 0; i < m; i++)
-                {
-                    sum[j] += K[i][j];
-                }
-            }
-            cout << "Сумма элементов каждого столбца:" << endl;
-            for (int j = 0; j < n; j++)
-            {
-                cout << "Столбец " << j << ": " << sum[j] << endl;
-            }
-        }
-        else
-        {
-            //cout << "Читай внимательно условие!" << endl;
-            throw std::exception("Читай внимательно условие!");
-        }
+    for (size_t i = 0; i < size; ++i) { 
+        arr[i] = rand() % (max - min + 1) + min;
     }
-    catch (std::exception e) {
-        std::cerr << e.what();
-    }
-    return 0;
 }
 
+void fillArray(int* arr, size_t size, int8_t min, int8_t max)
+{ 
+    for (size_t i = 0; i < size; ++i) { 
+        std::cout << "Element: ";
+        std::cin >> arr[i];
+        std::cout << '\n';
+    }
+}
+
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ РјР°С‚СЂРёС†С‹ РљРѕС€Рё РЅР° РѕСЃРЅРѕРІРµ РґРІСѓС… РјР°СЃСЃРёРІРѕРІ
+void createCauchyMatrix(int* X, int* Y, double** cauchyMatrix, uint32_t P, uint32_t Q) 
+{ 
+    for (size_t i = 0; i < P; ++i) {
+        for (size_t j = 0; j < Q; ++j) {
+            cauchyMatrix[i][j] = 1.0 / (X[i] + Y[j]);
+        }
+    }
+}
+
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ СЃСѓРјРјС‹ СЌР»РµРјРµРЅС‚РѕРІ РІ РєР°Р¶РґРѕРј СЃС‚РѕР»Р±С†Рµ РјР°С‚СЂРёС†С‹
+void calculateColumnSums(double** cauchyMatrix, double* columnSums, uint32_t P, uint32_t Q, double finalSum) 
+{ 
+    for (int j = 0; j < Q; j++) { 
+        finalSum = 0;
+        for (int i = 0; i < P; i++) { 
+            finalSum += cauchyMatrix[i][j];
+        
+        std::cout << "Column #" << j + 1 << ": " << finalSum << '\n';
+        }
+    }
+}
+
+void mtrxDefine(double**& matrix, size_t rows, size_t colums)
+{
+    matrix = new double* [rows];
+    for(size_t i = 0; i < rows; ++i) {
+        matrix[i] = new double [colums];
+    }
+}
+
+void freeMemory(int*arr)
+{
+    delete[] arr;
+}
+
+void freeMemory(double* arr)
+{
+    delete[] arr;
+}
+
+
+void freeCauchyMtrx(uint32_t P, double**& cauchyMatrix)
+{
+    for (size_t i = 0; i < P; ++i) {
+        delete[] cauchyMatrix[i];
+    }
+    delete[] cauchyMatrix;
+}
+
+int main() 
+{ 
+    // Р’РІРѕРґ СЂР°Р·РјРµСЂРѕРІ РјР°СЃСЃРёРІРѕРІ X(P) Рё Y(Q) СЃ РєР»Р°РІРёР°С‚СѓСЂС‹
+    uint32_t P = 0;
+    uint32_t Q = 0;
+    std::cout << "Enter array size X(P): ";
+    std::cin >> P;
+    std::cout << "Enter array size Y(Q): ";
+    std::cin >> Q;
+    std::cout << "How do I fill an array? 0 - Random; 1- Personal choose" << '\n';
+    char choose = '0';
+    // РЎРѕР·РґР°РЅРёРµ РјР°СЃСЃРёРІРѕРІ X(P) Рё Y(Q) Рё Р·Р°РїРѕР»РЅРµРЅРёРµ РёС… СЃР»СѓС‡Р°Р№РЅС‹РјРё С‡РёСЃР»Р°РјРё
+    double** cauchyMatrix  = nullptr;
+    int* X = new int[P];
+    int* Y = new int[Q];
+    // РЎРѕР·РґР°РЅРёРµ РјР°С‚СЂРёС†С‹ РљРѕС€Рё РЅР° РѕСЃРЅРѕРІРµ X(P) Рё Y(Q)
+    mtrxDefine(cauchyMatrix, P, Q);
+    double* columnSums = new double[Q];
+    std::cin >> choose;
+    double finalSum = 0;
+    if (choose == '0') { 
+        generateRandomArray(X, P, 1, 10);
+        generateRandomArray(Y, Q, 1, 10);
+        createCauchyMatrix(X, Y, cauchyMatrix, P, Q);
+        // Р’С‹РІРѕРґ РјР°С‚СЂРёС†С‹ РљРѕС€Рё
+        std::cout << "Cauchy matrix:" << '\n';
+        for (size_t i = 0; i < P; ++i) {
+            for (size_t j = 0; j < Q; ++j) {
+                std::cout << cauchyMatrix[i][j] << "\t";
+            }
+            std::cout << '\n';
+        }
+        calculateColumnSums(cauchyMatrix, columnSums, P, Q, finalSum);
+    }
+    if (choose == '1') { 
+        fillArray(X, P, 1, 10);
+        std::cout << "Second array" << '\n';
+        fillArray(Y, Q, 1, 10);
+        createCauchyMatrix(X, Y, cauchyMatrix, P, Q);
+        // Р’С‹РІРѕРґ РјР°С‚СЂРёС†С‹ РљРѕС€Рё
+        std::cout << "Cauchy matrix:" << '\n';
+        for (size_t i = 0; i < P; ++i) {
+            for (size_t j = 0; j < Q; ++j) {
+                std::cout << cauchyMatrix[i][j] << "\t";
+            }
+            std::cout << '\n';
+        }
+        calculateColumnSums(cauchyMatrix, columnSums, P, Q, finalSum);
+    }
+    else 
+    {
+        std::cout << "Read more attantive!";
+        return 0;
+    }
+    freeMemory(X);
+    freeMemory(Y);
+    freeMemory(columnSums);
+    freeCauchyMtrx(P, cauchyMatrix);
+    return 0;
+}
