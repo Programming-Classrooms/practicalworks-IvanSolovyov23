@@ -28,7 +28,7 @@ void createCauchyMatrix(int* X, int* Y, double** cauchyMatrix, uint32_t P, uint3
     }
 }
 
-// Функция для вычисления суммы элементов в каждом столбце матрицы
+// Функция для вычисления суммы элементов в каждом столбце матрицы                     
 void calculateColumnSums(double** cauchyMatrix, double* columnSums, uint32_t P, uint32_t Q, double finalSum) 
 { 
     for (int j = 0; j < Q; j++) { 
