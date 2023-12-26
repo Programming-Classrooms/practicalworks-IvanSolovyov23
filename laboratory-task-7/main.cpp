@@ -28,6 +28,16 @@ int countZeros(const char* str) {
     return count;
 }
 
+void print(char* maxZerosWord)
+{
+    if (maxZerosWord != " ") {
+        std::cout << "Word with maximum number of zeros: " << maxZerosWord << '\n';
+    }
+    else {
+        std::cout << "There are no words in the line that consist only of numbers." << '\n';
+    }
+}
+
 int main()
 {
     const char* delimiter = " "; 
@@ -46,7 +56,7 @@ int main()
 
     while (word != nullptr) {
         bool isDigitOnly = true;
-        
+
         for (size_t i = 0; word[i] != '\0'; ++i) {
             if (!isdigit(word[i])) {
                 isDigitOnly = false;
@@ -64,12 +74,7 @@ int main()
         word = strtok(nullptr, delimiter);
     }
 
-    if (maxZerosWord != " ") {
-        std::cout << "Word with maximum number of zeros: " << maxZerosWord << '\n';
-    }
-    else {
-        std::cout << "There are no words in the line that consist only of numbers." << '\n';
-    }
+    print(maxZerosWord);
 
     return 0;
 }
