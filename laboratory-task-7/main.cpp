@@ -15,10 +15,9 @@
 void input(char* inputString, const char* message = "Input your string:")
 {
     std::cout << message << '\n';
-    std::cin.getline(inputString, 256); //������� ������
+    std::cin.getline(inputString, 256); 
 }
 
-// ������� ��� �������� ���������� ����� � ������
 int countZeros(const char* str) {
     size_t count = 0;
     for (int i = 0; str[i] != '\0'; ++i) {
@@ -31,28 +30,30 @@ int countZeros(const char* str) {
 
 int main()
 {
-    const char* delimiter = " "; // ������-�����������
+    const char* delimiter = " "; 
     char* inputString = new char[256];
     
     input(inputString);
 
-    char* inputStringCopy = new char[strlen(inputString) + 1]; // �������� ����� ������, ������� strtok �������� ���������� �� ������, ������� ������ ������������ ��������� ������� � �������� ���������. ������ ����� ����� ������� ����� ������ � �������� ��������� �� ��� ������� strtok.
+    char* inputStringCopy = new char[strlen(inputString) + 1]; 
 
     strcpy(inputStringCopy, inputString);
 
-    char* word = strtok(inputStringCopy, delimiter); // ��������� ������ �� �����
+    char* word = strtok(inputStringCopy, delimiter);
 
-    size_t maxZeros = 0; // ������������ ���������� �����
-    char* maxZerosWord = nullptr; // ����� � ������������ ����������� �����
+    size_t maxZeros = 0; 
+    char* maxZerosWord = nullptr; 
 
     while (word != nullptr) {
         bool isDigitOnly = true;
+        
         for (size_t i = 0; word[i] != '\0'; ++i) {
             if (!isdigit(word[i])) {
                 isDigitOnly = false;
                 break;
             }
         }
+
         if (isDigitOnly) {
             size_t zerosCount = countZeros(word);
             if (zerosCount > maxZeros) {
