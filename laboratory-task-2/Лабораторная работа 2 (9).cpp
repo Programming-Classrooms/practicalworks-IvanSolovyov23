@@ -1,43 +1,65 @@
-﻿// Написать программу, которая для заданного натурального числа N находит дружественное, не превышающие это число:
+﻿/*
+    Написать программу, которая для заданного натурального числа N находит дружественное, не превышающие это число:
+*/
+
+
 #include <iostream>
-using namespace std;
-	int main ()
+
+
+int32_t inputNumber() 
+{
+    int32_t num;    
+    std::cout << "Input in:";
+	std::cin >> num;
+    if (num <= 0) 
+    {
+    	throw std::exception("Number isn't natural.");    
+    }
+    return num;    
+}
+
+int main()
+{
+	try
 	{
-		int n = 0;
-		while (n < 1)
-		{
-			cout << "Input in:";
-			cin >> n;
-		}
-		int temp1, temp2;
-		for (int i = 2; i <= n; ++i)
-		{
+		int32_t num = 0;
+		size_t temp1 = 0;
+    	size_t temp2 = 0;
+
+    	num = inputNumber();
+
+		for (size_t i = 2; i <= num; ++i) 
+    	{
 			temp1 = i;
-			int sum1 = 1;
-			int sum2 = 1;
-			for (int j = 2; j < temp1; ++j)
-			{
-				if (!(temp1 % j))
-				{
+			size_t sum1 = 1;
+			size_t sum2 = 1;
+
+			for (size_t j = 2; j < temp1; ++j) 
+        	{
+				if (!(temp1 % j)) 
+            	{
 					sum1 += j;
 				}
 			}
 			temp2 = sum1;
-			for (int k = 2; k < temp2; ++k)
-			{
-				if (!(temp2 % k))
-				{
-					sum2 += k;
-				}
-			}
-			if (sum2 == temp1 && temp1 < temp2)
-			{
-				cout << temp1 << " " << "and" << " " << temp2 << endl;
-			}
-		}
 
-		return 0;
-    }
+			for (size_t k = 2; k < temp2; ++k) 
+        	{
+				if (!(temp2 % k)) 
+            	{
+			    	sum2 += k;
+		    	}
+	    	}
 
-	
-
+    		if (sum2 == temp1 && temp1 < temp2) 
+        	{
+    			std::cout << temp1 << " " << "and" << " " << temp2 << std::endl;
+    		}
+    	}
+	}
+	catch (std::exception e)
+	{
+		std::cerr << "Oops! Exception: " << e.what() << std::endl;
+	}
+return 0;
+}

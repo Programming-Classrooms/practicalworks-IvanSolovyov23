@@ -1,37 +1,62 @@
-﻿// Написать программу, которая для заданного натурального числа выполняет разложение числа на простые множители
+﻿/*
+    Написать программу, которая для заданного натурального числа выполняет разложение числа на простые множители
+*/ 
+
+
 #include <iostream>
-using namespace std;
+#include <exception>
+
+
+size_t InputNumber(size_t n)
+{
+
+	std::cout << "Input natural n:";
+	std::cin >> n;
+	if (n <= 0)
+	{
+		throw std::exception("n isn't natural!");
+	}
+	return n;
+}
+
 int main()
 {
-	int n = 0;
-	while (n < 1)
+	try
 	{
-		cout << "Input natural n:";
-		cin >> n;
-	}
-	cout << n << " = ";
-	while (n > 1)
-	{
-		for (int i = 2; i <= n;)
+		size_t n = 0;
+		while (n < 1)
 		{
-			if (n % i)
+			n = InputNumber(n);
+			std::cout << n << " = ";
+		while (n > 1)
+		{
+			for (size_t i = 2; i <= n;) 
 			{
-				++i;
-			}
-			else
-			{
-				n /= i;
-				if (n != 1)
+				if (n % i)
 				{
-					cout << i << " * ";
+					++i;
 				}
 				else
 				{
-					cout << i;
+					n /= i;
+					if (n != 1)
+					{
+						std::cout << i << " * ";
+					}
+					else
+					{
+						std::cout << i;
+					}
 				}
 			}
 		}
 	}
-
 	return 0;
+	}
+
+	catch (std::exception e)
+	{
+		std::cerr << e.what() << '\n';
+		return 0;
+	}
 }
