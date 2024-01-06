@@ -24,15 +24,19 @@ std::string findMaxVowelWords(const std::string& inputString)
     std::string result;
     size_t maxVowelCount = 0;
     size_t currentVowelCount = 0;
-    size_t inputLineLen = inputString.length();
+    size_t quanitySymbols = inputString.length();
     std::string currentWord;
 
-    for (size_t i = 0; i < inputLineLen; ++i) {
+    for (size_t i = 0; i < quanitySymbols; ++i) {
         if (isalpha(inputString[i])) {
             currentWord += inputString[i];
             if (isVowel(inputString[i])) {
                 ++currentVowelCount;
             }
+        }
+        if (currentVowelCount == 0) {
+            std::cout << "Does not exist" << '\n';
+            return 0;
         }
         else {
             if (!currentWord.empty() && currentVowelCount >= maxVowelCount) {
@@ -63,7 +67,7 @@ std::string findMaxVowelWords(const std::string& inputString)
 
 int main() 
 {
-    setlocale(LC_ALL, "RU");
+    setlocale(LC_ALL, ".1251");
 
     std::string inputSring;
     
