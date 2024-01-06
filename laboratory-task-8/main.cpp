@@ -28,6 +28,12 @@ std::string findMaxVowelWords(const std::string& inputString)
     std::string currentWord;
 
     for (size_t i = 0; i < quanitySymbols; ++i) {
+        if ((static_cast<int>(inputString[i]) >= 192)&&(static_cast<int>(inputString[i]) <= 255))
+        {
+            throw std::exception("Wrong letter!");
+        }
+        else
+        {
         if (isalpha(inputString[i])) {
             currentWord += inputString[i];
             if (isVowel(inputString[i])) {
@@ -63,12 +69,13 @@ std::string findMaxVowelWords(const std::string& inputString)
     }
 
     return result;
-}
+     }
+ }
 
 int main() 
 {
-    setlocale(LC_ALL, ".1251");
-
+    try
+    {
     std::string inputSring;
     
     std::cout << "Input your string: ";
@@ -76,6 +83,11 @@ int main()
 
     std::string maxVowelWords = findMaxVowelWords(inputSring);
     std::cout << "Word with maximum amount of vowels: " << maxVowelWords << '\n';
-
     return 0;
+    }
+    catch(std::exception e)
+    {
+        std::cerr << e.what() << '\n';
+        return 0;
+    }
 }
