@@ -1,4 +1,12 @@
+/*
+    На основании двух векторов X(p) и Y(q) построить матрицу Коши по правилу : a[i, j] = 1/ (x[i]+ y[i]). где x[i] и y[i]
+    Найти сумму элементов каждого столбца
+*/
+
+
 #include <iostream>
+#include <exception>
+#include <iomanip>
 
 
 // Функция для создания и заполнения массива случайными числами
@@ -23,6 +31,9 @@ void createCauchyMatrix(int* X, int* Y, double** cauchyMatrix, uint32_t P, uint3
 { 
     for (size_t i = 0; i < P; ++i) {
         for (size_t j = 0; j < Q; ++j) {
+            if ((X[i] + Y[j]) == 0) {
+                throw std::exception("Sum is not zero");
+            }
             cauchyMatrix[i][j] = 1.0 / (X[i] + Y[j]);
         }
     }
@@ -31,7 +42,7 @@ void createCauchyMatrix(int* X, int* Y, double** cauchyMatrix, uint32_t P, uint3
 // Функция для вычисления суммы элементов в каждом столбце матрицы              
 void calculateColumnSums(double** cauchyMatrix, double* columnSums, uint32_t P, uint32_t Q, double finalSum) 
 { 
-    for (int j = 0; j < Q; j++) { 
+    for (int j = 0; j < Q; ++j) { 
         finalSum = 0;
         for (int i = 0; i < P; i++) { 
             finalSum += cauchyMatrix[i][j];
@@ -70,13 +81,21 @@ void freeCauchyMtrx(uint32_t P, double**& cauchyMatrix)
 
 int main() 
 { 
+    try {
     // Ввод размеров массивов X(P) и Y(Q) с клавиатуры
     uint32_t P = 0;
     uint32_t Q = 0;
     std::cout << "Enter array size X(P): ";
     std::cin >> P;
+    if (P <= 0) {
+        throw std::exception("P is not natural!");
+    }
     std::cout << "Enter array size Y(Q): ";
     std::cin >> Q;
+    if (Q <= 0) {
+        throw std::exception("Q is not natural!");
+    }
+
     std::cout << "How do I fill an array? 0 - Random; 1- Personal choose" << '\n';
     char choose = '0';
     // Создание массивов X(P) и Y(Q) и заполнение их случайными числами
@@ -88,25 +107,30 @@ int main()
     double* columnSums = new double[Q];
     std::cin >> choose;
     double finalSum = 0;
+
     if (choose == '0') { 
         generateRandomArray(X, P, 1, 10);
         generateRandomArray(Y, Q, 1, 10);
         createCauchyMatrix(X, Y, cauchyMatrix, P, Q);
+        std::cout << std::setprecision(8);
+        std::cout << std::setw(8);
         // Вывод матрицы Коши
         std::cout << "Cauchy matrix:" << '\n';
         for (size_t i = 0; i < P; ++i) {
             for (size_t j = 0; j < Q; ++j) {
-                std::cout << cauchyMatrix[i][j] << "\t";
+                std::cout << cauchyMatrix[i][j] << ' ';
             }
             std::cout << '\n';
         }
         calculateColumnSums(cauchyMatrix, columnSums, P, Q, finalSum);
     }
+    
     if (choose == '1') { 
         fillArray(X, P, 1, 10);
         std::cout << "Second array" << '\n';
         fillArray(Y, Q, 1, 10);
         createCauchyMatrix(X, Y, cauchyMatrix, P, Q);
+
         // Вывод матрицы Коши
         std::cout << "Cauchy matrix:" << '\n';
         for (size_t i = 0; i < P; ++i) {
@@ -117,14 +141,22 @@ int main()
         }
         calculateColumnSums(cauchyMatrix, columnSums, P, Q, finalSum);
     }
+
     else 
     {
         std::cout << "Read more attantive!";
         return 0;
     }
+
     freeMemory(X);
     freeMemory(Y);
     freeMemory(columnSums);
     freeCauchyMtrx(P, cauchyMatrix);
     return 0;
+    }
+    catch (std::exception e)
+    {
+        std::cerr << "Oops! Exception: " << e.what() << std::endl;
+        return -1;
+    }
 }
