@@ -10,6 +10,7 @@
 #include <iostream>
 #include <cstring>
 #include <cctype>
+#include <exception>
 
 
 void input(char* inputString, const char* message = "Input your string:")
@@ -23,6 +24,12 @@ int countZeros(const char* str) {
     for (int i = 0; str[i] != '\0'; ++i) {
         if (str[i] == '0') {
             ++count;
+        }
+        if (str[i] > 'а') {
+            throw std::exception("Russian symbol");
+        }
+        if (str[i] > 'A') {
+            throw std::exception("Russian symbol");
         }
     }
     return count;
@@ -40,7 +47,7 @@ void print(char* maxZerosWord)
 
 int main()
 {
-    setlocale(LC_ALL, "1251");
+    try {
     const char* delimiter = " "; 
     char* inputString = new char[256];
     
@@ -78,4 +85,10 @@ int main()
     print(maxZerosWord);
 
     return 0;
+    }
+    catch(std::exception e)
+    {
+        std::cerr << "Oops, exception" << e.what();
+        return 0;
+    }
 }
