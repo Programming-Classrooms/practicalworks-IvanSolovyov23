@@ -40,6 +40,7 @@ void print(char* maxZerosWord)
 
 int main()
 {
+    setlocale(LC_ALL, "1251");
     const char* delimiter = " "; 
     char* inputString = new char[256];
     
