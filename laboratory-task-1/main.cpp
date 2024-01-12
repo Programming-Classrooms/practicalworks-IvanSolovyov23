@@ -1,30 +1,47 @@
-// Calculate the sum of a series: e^x= 1+(x/1!)+ (x^2/2!) + ...
-#include <iostream> 
-#define USE_MATH_DEFINES
+/*
+	Посчитать сумму ряда e^x = ...
+*/
+
+#include <iostream>
 #include <cmath>
-int main()
+#include <string>
+
+
+double calculateExponentialRow(double x, double epsilon)
 {
-	setlocale(LC_ALL, "RU");
-	double x, epsilon;
-	int k;
-	std::cout << "Enter value x:" << std:: endl;
-	std::cin >> x;
-	do {
-		std:: cout << "Enter the number of series terms to calculate k (k>1):" << std:: endl;
-		std:: cin >> k;
-	} while (k <= 1);
-	epsilon = pow(10, -k);
-	double result = 1.0;
-	double term = 1.0;
-	int n = 1;
-	while (fabs(term) >= epsilon)
-	{
-		term *= x / n;
-		result += term;
-		n++;
-	}
-	double standard_result = exp(x);
-	std:: cout << "Approximate sum of series:" << result << std:: endl;
-	std:: cout << "Meaning exp(x):" << standard_result << std:: endl;
-	return 0;
+    double term = 1.0;
+    double sum = 1.0;
+    size_t index = 1;
+
+    while (std::abs(term) > epsilon) {
+        term = term * x / index;
+        sum += term;
+        ++index;
+    }
+    return sum;
+}
+
+int main() 
+{
+    try {
+        double x = 0.0;
+        std::cout << "Enter the degree e: " << '\n';
+        std::cin >> x;
+        if (std::cin.fail()) {
+            std::cout << "The entered value is not a valid number" << '\n';
+            return 0;
+        }
+
+        double epsilon = 1e-6;
+        double result = calculateExponentialRow(x, epsilon);
+
+        std::cout << "e^" << x << " = " << result << '\n';
+        std::cout << "Check result: " <<  exp(x);
+
+        return 0;
+    }
+    catch (std::exception e)
+    {
+        std::cerr << "exception: " << e.what();
+    }
 }
