@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/soloway/practicalworks-IvanSolovyov23/practicalworks-IvanSolovyov23/laboratory-task-3",
-      "program": "/home/soloway/practicalworks-IvanSolovyov23/practicalworks-IvanSolovyov23/laboratory-task-3/build/Debug/outDebug",
+      "cwd": "/home/soloway/practicalworks-IvanSolovyov23/laboratory-task-3",
+      "program": "/home/soloway/practicalworks-IvanSolovyov23/laboratory-task-3/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
