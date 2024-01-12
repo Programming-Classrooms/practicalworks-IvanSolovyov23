@@ -1,4 +1,4 @@
-# MacOS
+o# MacOS
 .DS_Store
 
 # Prerequisites
@@ -33,3 +33,5 @@
 *.exe
 *.out
 *.app
+laboratory-task-1
+laboratory-task-3
