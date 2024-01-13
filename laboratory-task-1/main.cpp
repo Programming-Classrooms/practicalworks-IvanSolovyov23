@@ -28,8 +28,7 @@ int main()
         std::cout << "Enter the degree e: " << '\n';
         std::cin >> x;
         if (std::cin.fail()) {
-            std::cout << "The entered value is not a valid number" << '\n';
-            return 0;
+            throw std::exception("The entered value is not a valid number");
         }
 
         double epsilon = 1e-6;
