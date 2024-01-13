@@ -157,6 +157,5 @@ int main()
     catch (std::exception e)
     {
         std::cerr << "Oops! Exception: " << e.what() << std::endl;
-        return -1;
     }
 }
