@@ -89,6 +89,5 @@ int main()
     catch(std::exception e)
     {
         std::cerr << "Oops, exception" << e.what();
-        return 0;
     }
 }
