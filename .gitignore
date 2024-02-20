@@ -1,5 +1,15 @@
-o# MacOS
+# System specific
 .DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/*
+
+# Bazel
+bazel-*/
+_bazel
+MODULE.bazel.lock
+.cache/
 
 # Prerequisites
 *.d
@@ -33,6 +43,3 @@ o# MacOS
 *.exe
 *.out
 *.app
-laboratory-task-1
-laboratory-task-3
-
