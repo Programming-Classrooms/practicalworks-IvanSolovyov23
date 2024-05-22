@@ -43,7 +43,8 @@ String::~String() {
 /* =========================================================================== */
 
 const char* String::getData() const {
-    return this->data;
+    const char* temp = data;
+    return temp;
 }
 
 size_t String::getSize() const {
