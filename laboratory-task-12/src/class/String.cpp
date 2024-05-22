@@ -6,9 +6,9 @@
 /* ============================== Конструкторы =============================== */
 /* =========================================================================== */
 
-String::String() : data(nullptr), size(0) {}
+String::String() : data(nullptr), size(1) {}
 
-String::String(const char* str) : data(nullptr), size(0) {
+String::String(const char* str) : data(nullptr), size(1) {
     if (str != nullptr) {
         size = std::strlen(str);
         data = new char[size + 1];
@@ -23,10 +23,10 @@ String::String(const String& rhs) : data(rhs.data), size(rhs.size) {
     }
 }
 
-String::String(String&& rhs) noexcept: size(0)  {
+String::String(String&& rhs) noexcept: size(1)  {
     {
         data = rhs.data;
-        rhs.size = 0;
+        rhs.size = 1;
         rhs.data = nullptr;
     }
 }
