@@ -11,35 +11,35 @@ private:
 	size_t columns;
 
 public:
-	// Конструкторы
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 	Matrix();
 	Matrix(size_t, size_t);
 	Matrix(const Matrix&);
 
-	// Деструктор
+	// Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
 	~Matrix();
 
-	// Геттеры
+	// Р“РµС‚С‚РµСЂС‹
 	size_t getRows() const;
 	size_t getColumns() const;
 	const int32_t& getElement(size_t, size_t) const;
 
-	//Сеттеры
+	// РЎРµС‚С‚РµСЂ
 	void setElements(size_t, size_t, int32_t);
 
-	// Операторы присваивания
+	// РћРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
 	Matrix& operator=(const Matrix& rhs);
 
-	// Оператор сравнения
+	// РћРїРµСЂР°С‚РѕСЂС‹ СЃСЂР°РІРЅРµРЅРёСЏ
 	bool operator==(const Matrix&) const;
 	bool operator!=(const Matrix&) const;
 
-	// Некторые методы
+	// РњРµС‚РѕРґС‹ РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ Рё РІС‹РІРѕРґР° 
 	void fillRandom(int32_t, int32_t);
 	void print() const;
 	int32_t determinantBySarrusMethod() const;
 
-	// Бинарные алгебраические операторы (матрица ? что-то)
+	// Р‘РёРЅР°СЂРЅС‹Рµ Р°Р»РіРµР±СЂР°РёС‡РµСЃРєРёРµ РѕРїРµСЂР°С‚РѕСЂС‹ (РјР°С‚СЂРёС†Р° ? С‡С‚Рѕ-С‚Рѕ) 
 	Matrix operator+(const Matrix&);
 	Matrix operator+(const int32_t&) const;
 	Matrix operator-(const Matrix&);
@@ -48,17 +48,18 @@ public:
 	Matrix operator*(const int32_t&) const;
 	Matrix operator/(const int32_t&) const;
 
-	// Бинарные алгеьраические операторы (что-то ? матрица)
-    friend Matrix operator*(int32_t, const Matrix&);
+	// Р‘РёРЅР°СЂРЅС‹Рµ Р°Р»РіРµР±СЂР°РёС‡РµСЃРєРёРµ РѕРїРµСЂР°С‚РѕСЂС‹ (С‡С‚Рѕ-С‚Рѕ ? РјР°С‚СЂРёС†Р°) 
+        friend Matrix operator*(int32_t, const Matrix&);
 
-	// Перегрузка составных операторов присваивания 
+	// РџРµСЂРµРіСЂСѓР·РєР° СЃРѕСЃС‚Р°РІРЅС‹С… РѕРїРµСЂР°С‚РѕСЂРѕРІ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ 
 	Matrix& operator+=(const Matrix& rhs);
 	Matrix& operator-=(const Matrix& rhs);
 
-	// Оператор ввода и вывода
+	// РћРїРµСЂР°С‚РѕСЂ РІРІРѕРґР° Рё РІС‹РІРѕРґР°
+
 	friend std::ostream& operator<<(std::ostream&, const Matrix&);
 	friend std::istream& operator>>(std::istream&, Matrix&);
 
 
 };
-#endif // !MATRIX_H
+#endif // MATRIX_H
