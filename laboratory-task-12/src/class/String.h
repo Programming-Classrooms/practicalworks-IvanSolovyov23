@@ -5,28 +5,29 @@
 #include <cmath>
 #include <cstring>
 
+
 class String {
 private:
 	char* data;
 	size_t size;
 public:
-	// Êîíñòðóêòðû 
+	// ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€Ñ‹
 	String();
 	String(const char*);
 	String(const String&);
 	String(String&&) noexcept;
 	
-	// Äåñòðóêòîðû
+	// Ð”ÐµÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€
 	~String();
 
-	// Ãåòòåðû
+	// Ð“ÐµÑ‚Ñ‚ÐµÑ€
 	const char* getData() const;
-	size_t getLength() const;
+	size_t getSize() const;
 
-	// Cåòòåð
+	// CÐµÑ‚Ñ‚ÐµÑ€
 	void setData(const char* str);
 
-	// Îñíîâíûå ìåòîäû äëÿ ðàáîòû ñî ñòðîêàìè
+	// ÐžÑÐ½Ð¾Ð²Ð½Ñ‹Ðµ Ð¼ÐµÑ‚Ð¾Ð´Ñ‹ Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ ÑÐ¾ ÑÑ‚Ñ€Ð¾ÐºÐ¾Ð¹
 	void clear();
 	void append(const char*);
 	bool isEmpty() const;
@@ -39,14 +40,14 @@ public:
 	char front() const;
 	char back() const;
 
-	// Îñíîâíûå îïåðàòîðû
+	// ÐžÐ¿ÐµÑ€Ð°Ñ‚Ð¾Ñ€Ñ‹ Ð¿Ñ€Ð¸ÑÐ²Ð°Ð¸Ð²Ð°Ð½Ð¸Ñ
 	String& operator=(const String&);
 	String operator+(const String&) const;
 	String operator-(const String&) const;
 	String& operator+=(const String&);
 	String& operator-=(const String&);
 
-	// Îïåðàòîðû ñðàâíåíèÿ
+	// ÐžÐ¿ÐµÑ€Ð°Ñ‚Ð¾Ñ€Ñ‹ ÑÑ€Ð°Ð²Ð½ÐµÐ½Ð¸Ñ 
 	bool operator==(const String&) const;
 	bool operator!=(const String&) const;
 	bool operator>(const String&) const;
@@ -54,15 +55,12 @@ public:
 	bool operator<(const String&) const;
 	bool operator<=(const String&) const;
 
-	// Îïåðàòîðû ïðåîáðàçîâàíèÿ òèïîâ
+	// ÐžÐ¿ÐµÑ€Ð°Ñ‚Ð¾Ñ€Ñ‹ Ð¿Ñ€ÐµÐ¾Ð±Ñ€Ð°Ð·Ð¾Ð²Ð°Ð½Ð¸Ñ ÑÑ‚Ñ€Ð¾ÐºÐ¸ 
 	operator std::string() const;
 	operator int32_t() const;
 	operator double() const;
 
-	// Ïðîâåðêà ìåòîäîâ
-
-
-	// Îïåðàòîðû ââîäà è âûâîäà 
+	// ÐžÐ¿ÐµÑ€Ð°Ñ‚Ð¾Ñ€ Ð²Ð²Ð¾Ð´Ð°/Ð²Ñ‹Ð²Ð¾Ð´Ð°
 	friend std::ostream& operator<<(std::ostream&, const String&);
 	friend std::istream& operator>>(std::istream&, String&);
 };

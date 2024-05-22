@@ -46,7 +46,7 @@ const char* String::getData() const {
     return this->data;
 }
 
-size_t String::getLength() const {
+size_t String::getSize() const {
     return this->size;
 }
 
