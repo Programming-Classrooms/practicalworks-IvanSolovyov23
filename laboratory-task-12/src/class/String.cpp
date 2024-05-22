@@ -32,7 +32,7 @@ String::String(String&& rhs) noexcept: size(1)  {
 }
 
 String::~String() {
-    delete[] data;
+    data = nullptr;
 }
 
 
