@@ -6,7 +6,7 @@
 /* ============================== Конструкторы =============================== */
 /* =========================================================================== */
 
-String::String() : data(nullptr), size(1) {}
+String::String() : data(nullptr), size(0) {}
 
 String::String(const char* str) : data(nullptr), size(1) {
     if (str != nullptr) {

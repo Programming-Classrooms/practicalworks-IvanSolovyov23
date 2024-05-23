@@ -12,7 +12,7 @@ int main()
 		std::cout << "Copy main string: " << str2 << std::endl;
 
 		// Проверка Геттеров и Сеттеров
-		std::cout << "Length of main string: " << str2.getLength() << std::endl; 
+		std::cout << "Length of main string: " << str2.getSize() << std::endl; 
 		std::cout << "Data of main string: " << str2.getData() << std::endl; 
 
 		str1.setData("KrEptographia"); 

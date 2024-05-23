@@ -9,17 +9,17 @@ TEST(StringTest, GetDataTest) {
 
 TEST(StringTest, GetLengthTest) {
     String str("Hello");
-    EXPECT_EQ(str.getLength(), 5);
+    EXPECT_EQ(str.getSize(), 5);
 }
 
 TEST(StringTest, SetDataTest) {
     String str("Hello");
     str.setData("World");
     EXPECT_STREQ(str.getData(), "World");
-    EXPECT_EQ(str.getLength(), 5);
+    EXPECT_EQ(str.getSize(), 5);
 
     str.setData(nullptr);
-    EXPECT_EQ(str.getLength(), 0);
+    EXPECT_EQ(str.getSize(), 0);
     EXPECT_EQ(str.getData(), nullptr);
 }
 
