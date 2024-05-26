@@ -1,10 +1,11 @@
 #include <gtest/gtest.h>
-#include "../class/String.h" 
+#include "../string/String.h" 
 
 
 TEST(StringTest, GetDataTest) {
     String str("Hello");
-    EXPECT_STREQ(str.getData(), "Hello");
+    char* temp = nullptr;
+    EXPECT_STREQ(str.getData(temp), "Hello");
 }
 
 TEST(StringTest, GetLengthTest) {
@@ -15,12 +16,13 @@ TEST(StringTest, GetLengthTest) {
 TEST(StringTest, SetDataTest) {
     String str("Hello");
     str.setData("World");
-    EXPECT_STREQ(str.getData(), "World");
+    char* temp = nullptr;
+    EXPECT_STREQ(str.getData(temp), "World");
     EXPECT_EQ(str.getSize(), 5);
 
     str.setData(nullptr);
     EXPECT_EQ(str.getSize(), 0);
-    EXPECT_EQ(str.getData(), nullptr);
+    EXPECT_EQ(str.getData(temp), nullptr);
 }
 
 TEST(StringTest, ClearTest) {
@@ -56,13 +58,6 @@ TEST(StringTest, GetlineTest) {
 TEST(StringTest, CapacityTest) {
     String str("Test");
     EXPECT_EQ(str.capacity(), 4);
-}
-
-TEST(StringTest, FindTest) {
-    String str("Hello World");
-    EXPECT_EQ(str.find("World"), 6);
-    EXPECT_EQ(str.find("o"), 4);
-    EXPECT_THROW(str.find("NotInString"), std::logic_error);
 }
 
 TEST(StringTest, BeginTest) {

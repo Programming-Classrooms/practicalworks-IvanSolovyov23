@@ -45,9 +45,14 @@ char* String::getData(char* buffer) const {
         buffer = nullptr;
     }
 
-    buffer = new char[strlen(data) + 1];
-    strcpy(buffer, data);
-    return buffer;
+    if (data != nullptr)
+    {
+        buffer = new char[strlen(data) + 1];
+        strcpy(buffer, data);
+        return buffer;
+    }
+
+    return nullptr;
 }
 
 size_t String::getSize() const {
@@ -62,7 +67,10 @@ size_t String::getSize() const {
 /* =========================================================================== */
 
 void String::setData(const char* str) {
-    delete[] data;
+    if (data != nullptr)
+    {
+        delete[] data;
+    }
     if (str != nullptr) {
         size = std::strlen(str);
         data = new char[size + 1];
