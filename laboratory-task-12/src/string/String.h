@@ -29,6 +29,7 @@ public:
 
 	// Основные методы для работы со строкой
 	void clear();
+	void clone(const String& origin);
 	void append(const char*);
 	bool isEmpty() const;
 	void getline();

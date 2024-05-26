@@ -16,11 +16,8 @@ String::String(const char* str) : data(nullptr), size(1) {
     }
 }
 
-String::String(const String& rhs) : data(rhs.data), size(rhs.size) {
-    if (rhs.data != nullptr) {
-        data = new char[size + 1];
-        std::strcpy(data, rhs.data);
-    }
+String::String(const String& rhs) {
+    clone(rhs);
 }
 
 String::String(String&& rhs) noexcept: size(1)  {
@@ -85,6 +82,14 @@ void String::clear() {
         data = nullptr;
     }
     size = 0;
+}
+
+void String::clone(const String& rhs) {
+    if (rhs.data != nullptr) {
+        data = new char[size + 1];
+        std::strcpy(data, rhs.data);
+    }
+    size = rhs.size;
 }
 
 void String::append(const char* str) {
