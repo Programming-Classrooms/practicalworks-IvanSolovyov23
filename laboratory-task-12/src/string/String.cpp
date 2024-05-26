@@ -32,11 +32,7 @@ String::String(String&& rhs) noexcept: size(1)  {
 }
 
 String::~String() {
-    if (data != nullptr)
-    {
-        delete[] data;
-        data = nullptr;
-    }
+    clear();
 }
 
 
@@ -83,8 +79,11 @@ void String::setData(const char* str) {
 /* =========================================================================== */
 
 void String::clear() {
-    delete[] data;
-    data = nullptr;
+    if (data != nullptr)
+    {
+        delete[] data;
+        data = nullptr;
+    }
     size = 0;
 }
 
