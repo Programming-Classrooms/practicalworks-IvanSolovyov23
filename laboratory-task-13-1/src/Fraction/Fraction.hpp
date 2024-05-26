@@ -6,6 +6,7 @@
 #include <utility>
 #include <stdexcept>
 
+
 class Fraction {
 private:
 
@@ -15,28 +16,28 @@ private:
 
 public:
 
-	// Êîíñòðóêòîðû 
+	// Конструкторы
 	Fraction();                   
 	Fraction(const Fraction&);     
 	Fraction(int32_t, int32_t);  
 	Fraction(Fraction&&) noexcept;         
 
-	// Äåñòðóêòîð 
+	// Деструктор
 	~Fraction();
 
-	// Ãåòòåðû 
+	// Геттеры
 	int32_t getNumerator() const;
 	int32_t getDenominator() const;
 
-	// Cåòòåðû
+	// Сеттеры
 	void setNumerator(const int32_t);
 	void setDenominator(const int32_t);
 
-	// Ïåðåãðóçêè îïåðàòîðîâ ïðåîáðàçîâàíèÿ òèïîâ
+	// Перегрузка операторов преобразования
 	explicit operator int32_t() const;
 	explicit operator double() const;
 
-	// Ïåðåãðóçêè îïåðàòîðîâ ñðàâíåíèÿ 
+	// Перегрузка операторов сравнения
 	bool operator==(const Fraction&) const;
 	bool operator!=(const Fraction&) const;
 	bool operator<(const Fraction&) const;
@@ -44,7 +45,7 @@ public:
 	bool operator<=(const Fraction&) const;
 	bool operator>=(const Fraction&) const;
 
-	// Ïåðåãðóçêà áèíàðíûõ àëãåáðàè÷åñêèõ îïåðàòîðîâ (äðîáü + ÷òî-òî)
+	// Перегрузка бинарных алгебраических операторов (дробь + скаляр)
 	Fraction operator+(const Fraction&) const;
 	Fraction operator-(const Fraction&) const;
 	Fraction operator*(const Fraction&) const;
@@ -60,7 +61,7 @@ public:
 	Fraction operator*(const double&) const;
 	Fraction operator/(const double&) const;
 
-	// Ïåðåãðóçêà áèíàðíûõ àëãåáðàè÷åñêèõ îïåðàòîðîâ (÷òî-òî + äðîáü)
+	// Перегрузка бинарных алгебраических операторов (скаляр + дробь)
 	friend Fraction operator+(const int32_t&, const Fraction&);
 	friend Fraction operator-(const int32_t&, const Fraction&);
 	friend Fraction operator*(const int32_t&, const Fraction&);
@@ -70,7 +71,7 @@ public:
 	friend Fraction operator*(const double&, const Fraction&);
 	friend Fraction operator/(const double&, const Fraction&);
 
-	// Ïåðåãðóçêà îïåðàòîðîâ ïðèñâàèâàíèÿ 
+	// Перегрузка операторов присваивания
 	Fraction& operator=(const Fraction& rhs);   
 	Fraction& operator=(Fraction&&) noexcept;   
 	Fraction& operator=(const int32_t);         
@@ -84,7 +85,7 @@ public:
 	Fraction& operator*=(const int32_t);
 	Fraction& operator/=(const int32_t);
 
-	// Ïåðåãðóçêà óíàðíûõ îïåðàòîðîâ
+	// Перегрузка унарных алгебраических операторов
 	Fraction& operator++();
 	Fraction operator++(int);
 	Fraction& operator--();
@@ -93,7 +94,7 @@ public:
 	Fraction operator-();
 	Fraction operator~();
 
-	// Ïåðåãðóçêè îïåðàòîðîâ ââîäà/âûâîäà
+	// Перегрузка операторв вывода/ввода
 	friend std::istream& operator>>(std::istream&, Fraction&);
 	friend std::ostream& operator<<(std::ostream&, const Fraction&);
 
@@ -101,4 +102,4 @@ public:
 	void print() const;
 };
 
-#endif // !FRACTION_H
+#endif // FRACTION_H

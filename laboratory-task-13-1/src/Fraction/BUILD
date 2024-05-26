@@ -1,6 +1,6 @@
 
 cc_library(
-    name = "funcs",
+    name = "Fraction",
     srcs = ["Fraction.cpp"],
     hdrs = ["Fraction.hpp"],
     visibility = ["//visibility:public"]
