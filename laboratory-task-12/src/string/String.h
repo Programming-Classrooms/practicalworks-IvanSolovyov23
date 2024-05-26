@@ -21,7 +21,7 @@ public:
 	~String();
 
 	// Геттер
-	void getData(char* buffer) const;
+	char* getData(char* buffer) const;
 	size_t getSize() const;
 
 	// Cеттер

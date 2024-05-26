@@ -38,7 +38,7 @@ String::~String() {
 /* ============================ Геттеры ====================================== */
 /* =========================================================================== */
 
-void String::getData(char* buffer) const {
+char* String::getData(char* buffer) const {
     if (buffer != nullptr)
     {
         delete[] buffer;
@@ -47,6 +47,7 @@ void String::getData(char* buffer) const {
 
     buffer = new char[strlen(data) + 1];
     strcpy(buffer, data);
+    return buffer;
 }
 
 size_t String::getSize() const {

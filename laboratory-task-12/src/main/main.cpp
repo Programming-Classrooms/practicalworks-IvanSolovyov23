@@ -1,4 +1,4 @@
-#include "../class/String.h"
+#include "../string/String.h"
 
 
 int main() 
@@ -13,7 +13,10 @@ int main()
 
 		// Проверка Геттеров и Сеттеров
 		std::cout << "Length of main string: " << str2.getSize() << std::endl; 
-		std::cout << "Data of main string: " << str2.getData() << std::endl; 
+		
+		char* temp = nullptr;
+		temp = str2.getData(temp);
+		std::cout << "Data of main string: " << temp << std::endl; 
 
 		str1.setData("KrEptographia"); 
 		std::cout << "Main string after setting data: " << str1 << std::endl;
