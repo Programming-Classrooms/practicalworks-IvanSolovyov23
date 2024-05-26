@@ -11,35 +11,36 @@ private:
 	size_t columns;
 
 public:
-	// Конструкторы
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 	Matrix();
 	Matrix(size_t, size_t);
 	Matrix(const Matrix&);
 
-	// Деструктор
+	// Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
 	~Matrix();
 
-	// Геттеры
+	// Р“РµС‚С‚РµСЂС‹
 	size_t getRows() const;
 	size_t getColumns() const;
 	const int32_t& getElement(size_t, size_t) const;
 
-	//Сеттеры
-	void setElements(size_t, size_t, int32_t);
+	// РЎРµС‚С‚РµСЂС‹
+	void setElement(size_t, size_t, int32_t);
 
-	// Операторы присваивания
+	// РћРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
 	Matrix& operator=(const Matrix& rhs);
 
-	// Оператор сравнения
+	// РћРїРµСЂР°С‚РѕСЂ СЃСЂР°РІРЅРµРЅРёСЏ
 	bool operator==(const Matrix&) const;
 	bool operator!=(const Matrix&) const;
 
-	// Некторые методы
+	// РњРµС‚РѕРґС‹ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РјР°С‚СЂРёС†РµР№
 	void fillRandom(int32_t, int32_t);
 	void print() const;
-	int32_t determinantBySarrusMethod() const;
+	void clear();
+	void clone(const Matrix&);
 
-	// Бинарные алгебраические операторы (матрица ? что-то)
+	// РџРµСЂРµРіСЂСѓР·РєР° Р±РёРЅР°СЂРЅС‹С… Р°Р»РіРµР±СЂР°РёС‡РµСЃРєРёС… РѕРїРµСЂР°С‚РѕСЂРѕРІ (РњР°С‚СЂРёС†Р° (?) СЃРєР°Р»СЏСЂ)
 	Matrix operator+(const Matrix&);
 	Matrix operator+(const int32_t&) const;
 	Matrix operator-(const Matrix&);
@@ -48,17 +49,17 @@ public:
 	Matrix operator*(const int32_t&) const;
 	Matrix operator/(const int32_t&) const;
 
-	// Бинарные алгеьраические операторы (что-то ? матрица)
+	// Р”СЂСѓР¶РµСЃС‚РІРµРЅРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ СѓРјРЅРѕР¶РµРЅРёСЏ (СЃРєР°Р»СЏСЂ (?) РјР°С‚СЂРёС†Р°)
     friend Matrix operator*(int32_t, const Matrix&);
 
-	// Перегрузка составных операторов присваивания 
+	// РџРµСЂРµРіСЂСѓР·РєР° СЃРѕСЃС‚Р°РІРЅС‹С… РѕРїРµСЂР°С‚СЂРѕРІ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
 	Matrix& operator+=(const Matrix& rhs);
 	Matrix& operator-=(const Matrix& rhs);
 
-	// Оператор ввода и вывода
+	// РћРїРµСЂР°С‚РѕСЂС‹ РІС‹РІРѕРґР° Рё РІРІРѕРґР°
 	friend std::ostream& operator<<(std::ostream&, const Matrix&);
 	friend std::istream& operator>>(std::istream&, Matrix&);
 
 
 };
-#endif // !MATRIX_H
+#endif // MATRIX_H

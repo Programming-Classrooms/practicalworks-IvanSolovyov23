@@ -1,6 +1,6 @@
 
 cc_library(
-    name = "funcs",
+    name = "Matrix",
     srcs = ["Matrix.cpp"],
     hdrs = ["Matrix.h"],
     visibility = ["//visibility:public"]

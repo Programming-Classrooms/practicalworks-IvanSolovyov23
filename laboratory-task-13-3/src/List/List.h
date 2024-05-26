@@ -16,18 +16,18 @@ private:
     size_t size;
 
 public:
-    // Конструкторы и деструктор 
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹ Рё РґРµСЃС‚СЂСѓРєС‚РѕСЂ
     LinkedList();
     LinkedList(const LinkedList& rhs);
     ~LinkedList();
 
-    // Оператор сравнения
+    // РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
     LinkedList& operator=(const LinkedList& rhs);
 
-    // Геттер
+    // Р“РµС‚С‚РµСЂ
     size_t getSize() const;
 
-    // Основные методы List
+    // РњРЅС‚РѕРґС‹ РґР»СЏ List
     void prepend(const T& data);
     void append(const T& data);
     void removeFirst();
@@ -41,4 +41,3 @@ public:
 };
 
 #include "List.inl"
-

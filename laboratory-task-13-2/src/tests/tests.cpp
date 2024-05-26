@@ -1,24 +1,24 @@
 #include <gtest/gtest.h>
-#include "../funcs/Matrix.h"
+#include "../Matrix/Matrix.h"
 
 TEST(TestCaseName, TestName) {
   EXPECT_EQ(1, 1);
   EXPECT_TRUE(true);
 }
-// ���� ��� ������� getRows � getColumns
+
 TEST(MatrixTest, GetRowsAndColumnsTest) {
     Matrix mat(3, 4);
     EXPECT_EQ(mat.getRows(), 3);
     EXPECT_EQ(mat.getColumns(), 4);
 }
 
-// ���� ��� ������ getElement
+
 TEST(MatrixTest, GetElementTest) {
     Matrix mat(2, 2);
-    mat.setElements(0, 0, 1);
-    mat.setElements(0, 1, 2);
-    mat.setElements(1, 0, 3);
-    mat.setElements(1, 1, 4);
+    mat.setElement(0, 0, 1);
+    mat.setElement(0, 1, 2);
+    mat.setElement(1, 0, 3);
+    mat.setElement(1, 1, 4);
 
     EXPECT_EQ(mat.getElement(0, 0), 1);
     EXPECT_EQ(mat.getElement(0, 1), 2);
@@ -26,13 +26,13 @@ TEST(MatrixTest, GetElementTest) {
     EXPECT_EQ(mat.getElement(1, 1), 4);
 }
 
-// ���� ��� ������ setElements
+
 TEST(MatrixTest, SetElementTest) {
     Matrix mat(2, 2);
-    mat.setElements(0, 0, 1);
-    mat.setElements(0, 1, 2);
-    mat.setElements(1, 0, 3);
-    mat.setElements(1, 1, 4);
+    mat.setElement(0, 0, 1);
+    mat.setElement(0, 1, 2);
+    mat.setElement(1, 0, 3);
+    mat.setElement(1, 1, 4);
 
     EXPECT_EQ(mat.getElement(0, 0), 1);
     EXPECT_EQ(mat.getElement(0, 1), 2);
@@ -41,7 +41,7 @@ TEST(MatrixTest, SetElementTest) {
 }
 
 
-// ���� ��� ��������� ��������
+
 TEST(MatrixTest, AdditionOperatorTest) {
     Matrix mat1(2, 2);
     Matrix mat2(2, 2);
@@ -56,7 +56,7 @@ TEST(MatrixTest, AdditionOperatorTest) {
     }
 }
 
-// ���� ��� ��������� ���������
+
 TEST(MatrixTest, SubtractionOperatorTest) {
     Matrix mat1(2, 2);
     Matrix mat2(2, 2);
@@ -71,7 +71,7 @@ TEST(MatrixTest, SubtractionOperatorTest) {
     }
 }
 
-// ���� ��� ��������� ��������� �� ������
+
 TEST(MatrixTest, MultiplicationByScalarOperatorTest) {
     Matrix mat(2, 2);
     mat.fillRandom(1, 10);
@@ -85,7 +85,7 @@ TEST(MatrixTest, MultiplicationByScalarOperatorTest) {
     }
 }
 
-// ���� ��� ��������� ������� �� ������
+
 TEST(MatrixTest, DivisionByScalarOperatorTest) {
     Matrix mat(2, 2);
     mat.fillRandom(2, 10);

@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
-#include "../funcs/List.h"
+#include "../List/List.h"
+
 
 TEST(TestCaseName, TestName) {
     EXPECT_EQ(1, 1);

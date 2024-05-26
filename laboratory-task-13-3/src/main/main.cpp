@@ -1,4 +1,4 @@
-#include "../funcs/List.h"
+#include "../List/List.h"
 
 int main()
 {
