@@ -20,12 +20,11 @@ String::String(const String& rhs) {
     clone(rhs);
 }
 
-String::String(String&& rhs) noexcept: size(1)  {
-    {
-        data = rhs.data;
-        rhs.size = 1;
-        rhs.data = nullptr;
-    }
+String::String(String&& rhs) noexcept {
+    data = rhs.data;
+    rhs.data = nullptr;
+    size = rhs.size;
+    rhs.size = 0;
 }
 
 String::~String() {
@@ -39,9 +38,15 @@ String::~String() {
 /* ============================ Геттеры ====================================== */
 /* =========================================================================== */
 
-const char* String::getData() const {
-    const char* temp = data;
-    return temp;
+void String::getData(char* buffer) const {
+    if (buffer != nullptr)
+    {
+        delete[] buffer;
+        buffer = nullptr;
+    }
+
+    buffer = new char[strlen(data) + 1];
+    strcpy(buffer, data);
 }
 
 size_t String::getSize() const {
