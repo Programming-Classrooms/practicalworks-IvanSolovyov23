@@ -1,0 +1,5 @@
+Fish caught by fisherman 1:: Акула Карп 
+Fish caught by fisherman 2:: Вобла Золотая 
+Fish caught by fisherman 3:: Вобла Карп 
+Fish caught by at least one fisherman: : Акула Вобла Золотая Карп 
+Fish in the lake but not caught by any fisherman: : Сом 
