@@ -1,7 +1,7 @@
 #ifndef BOOK_HPP
 #define BOOK_HPP
 
-
+#include <algorithm>
 #include <iostream>
 #include <vector>			// std::vector
 
